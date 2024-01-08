@@ -159,6 +159,10 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# user manager config
+AUTH_USER_MODEL = "accounts.User"
+
+
 
 # rest_framework settings
 REST_FRAMEWORK = {
