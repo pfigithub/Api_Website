@@ -44,8 +44,11 @@ INSTALLED_APPS = [
     'allauth.account',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
     'djoser',
+    'drf_yasg',
     'accounts',
+    'mail_templated',
 ]
 
 MIDDLEWARE = [
