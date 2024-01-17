@@ -5,6 +5,9 @@ from .users import User
 
 
 class Profile(models.Model):
+    """
+    Profile class for each user which is being created to hold the information
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=250)
     last_name = models.CharField(max_length=250)
@@ -19,5 +22,8 @@ class Profile(models.Model):
 
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, created, **kwargs):
+    """
+    Signal for post creating a user which activates when a user being created ONLY
+    """
     if created:
         Profile.objects.create(user=instance)
