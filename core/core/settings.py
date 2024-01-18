@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'djoser',
     'drf_yasg',
     'accounts',
+    'website',
     'blog',
     'mail_templated',
 ]
