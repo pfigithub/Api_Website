@@ -22,7 +22,13 @@ from website.views import maintenance_view
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from website.sitemaps import StaticViewSitemap
+from blog.sitemaps import BlogSitemap
+from django.contrib.sitemaps.views import sitemap
 
+
+
+sitemaps = {'static': StaticViewSitemap, 'blog': BlogSitemap}
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -37,7 +43,7 @@ schema_view = get_schema_view(
     permission_classes=[permissions.AllowAny],
 )
 
-site_ready = False
+site_ready = True
 
 if site_ready == False:
     urlpatterns = [
@@ -65,7 +71,12 @@ else:
             name="schema-swagger-ui",
         ),
         path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
-       
+        path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+            name='django.contrib.sitemaps.views.sitemap'),
+        # path('robots.txt', include('robots.urls')),
+        # path('captcha/', include('captcha.urls')),
+        # path('summernote/', include('django_summernote.urls')),
+        # path('__debug__/', include('debug_toolbar.urls'))
     ]   
 
 
