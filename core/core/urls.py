@@ -73,7 +73,7 @@ else:
         path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
         path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
             name='django.contrib.sitemaps.views.sitemap'),
-        # path('robots.txt', include('robots.urls')),
+        path('robots.txt', include('robots.urls')),
         # path('captcha/', include('captcha.urls')),
         # path('summernote/', include('django_summernote.urls')),
         # path('__debug__/', include('debug_toolbar.urls'))
