@@ -1,10 +1,11 @@
 from django.contrib import admin
 from .models import Post, Category
+from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.
 
 
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(SummernoteModelAdmin):
     list_display = [
         "author",
         "title",
@@ -13,6 +14,7 @@ class PostAdmin(admin.ModelAdmin):
         "created_date",
         "published_date",
     ]
+    summernote_fields = ('content',)
 
 
 admin.site.register(Post, PostAdmin)

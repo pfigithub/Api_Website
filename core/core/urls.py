@@ -75,7 +75,7 @@ else:
             name='django.contrib.sitemaps.views.sitemap'),
         path('robots.txt', include('robots.urls')),
         # path('captcha/', include('captcha.urls')),
-        # path('summernote/', include('django_summernote.urls')),
+        path('summernote/', include('django_summernote.urls')),
         path('__debug__/', include('debug_toolbar.urls'))
     ]   
 
