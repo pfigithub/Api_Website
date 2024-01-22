@@ -48,7 +48,7 @@ site_ready = True
 if site_ready == False:
     urlpatterns = [
         re_path(r'.*', maintenance_view),
-        # path('__debug__/', include('debug_toolbar.urls'))
+        #path('__debug__/', include('debug_toolbar.urls'))
     ]
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
@@ -76,7 +76,7 @@ else:
         path('robots.txt', include('robots.urls')),
         # path('captcha/', include('captcha.urls')),
         # path('summernote/', include('django_summernote.urls')),
-        # path('__debug__/', include('debug_toolbar.urls'))
+        path('__debug__/', include('debug_toolbar.urls'))
     ]   
 
 

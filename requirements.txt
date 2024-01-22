@@ -9,6 +9,7 @@ django-filter
 django-summernote
 django-taggit
 django-robots
+django-debug-toolbar
 drf-yasg[validation]
 djangorestframework-simplejwt
 djoser
