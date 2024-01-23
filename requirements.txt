@@ -10,6 +10,8 @@ django-summernote
 django-taggit
 django-robots
 django-debug-toolbar
+django-simple-captcha
+django-multi-captcha-admin
 drf-yasg[validation]
 djangorestframework-simplejwt
 djoser
