@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'debug_toolbar',
     'django_summernote',
+    'django_filters',
     'captcha',
     'robots',
     'djoser',
