@@ -63,7 +63,7 @@ class PostListView(ListView):
 
 
 # cbv post detail
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
     #context_object_name = "post"
 
