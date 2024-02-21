@@ -227,6 +227,9 @@ EMAIL_PORT = 25
 # api access to all
 CORS_ALLOW_ALL_ORIGINS: True
 
+# celery configs
+CELERY_BROKER_URL = "redis://redis:6379/1"
+
 # summernot config
 
 # X_FRAME_OPTIONS = 'SAMEORIGIN'
