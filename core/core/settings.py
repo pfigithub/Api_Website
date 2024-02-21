@@ -230,8 +230,18 @@ CORS_ALLOW_ALL_ORIGINS: True
 # celery configs
 CELERY_BROKER_URL = "redis://redis:6379/1"
 
-# summernot config
+# cashing configs
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    }
+}
 
+# summernot config
 # X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 UMMERNOTE_THEME = 'bs4'
@@ -271,3 +281,4 @@ SUMMERNOTE_CONFIG = {
         ],
     }
 }
+
