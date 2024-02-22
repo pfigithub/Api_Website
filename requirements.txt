@@ -14,6 +14,7 @@ django-simple-captcha
 django-multi-captcha-admin
 drf-yasg[validation]
 djangorestframework-simplejwt
+django-allauth
 djoser
 django-cors-headers
 
