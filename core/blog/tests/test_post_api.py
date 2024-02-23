@@ -22,7 +22,7 @@ def common_user():
 
 @pytest.fixture
 def common_category():
-    category_obj = Category.objects.create(name = 'cat1')
+    category_obj = Category.objects.create(name="cat1")
     return category_obj
 
 
@@ -44,16 +44,18 @@ class TestPostApi:
         response = api_client.post(url, data)
         assert response.status_code == 401
 
-    def test_create_post_response_201_status(self, api_client, common_user, common_category):
+    def test_create_post_response_201_status(
+        self, api_client, common_user, common_category
+    ):
         url = reverse("blog:api-v1:post-list")
         user = common_user
         category = common_category
         data = {
             "title": "test96",
             "content": "description",
-            "category":category,
+            "category": category,
             "status": True,
-            "published_date": datetime.now()
+            "published_date": datetime.now(),
         }
         # no difference between force_login and force_authenticate here
         # api_client.force_authenticate(user=user)
@@ -62,7 +64,9 @@ class TestPostApi:
         assert response.status_code == 201
 
     def test_create_post_invalid_data_response_400_status(
-        self, api_client, common_user,
+        self,
+        api_client,
+        common_user,
     ):
         url = reverse("blog:api-v1:post-list")
         data = {"title": "test97", "content": "description"}

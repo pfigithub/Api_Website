@@ -93,13 +93,18 @@ class ChangePasswordSerializer(serializers.Serializer):
 
         return super().validate(attrs)
 
+
 class RequestResetPasswordSerializer(serializers.Serializer):
     email = serializers.EmailField(required=True)
 
 
 class ResetPasswordSerializer(serializers.Serializer):
-    new_password = serializers.CharField(required=True, write_only=True,)
+    new_password = serializers.CharField(
+        required=True,
+        write_only=True,
+    )
     confirm_password = serializers.CharField(write_only=True, required=True)
+
     def validate(self, attrs):
         if attrs.get("new_password") != attrs.get("confirm_password"):
             raise serializers.ValidationError({"detail": "passwords does not match"})

@@ -34,12 +34,12 @@ class Command(BaseCommand):
                 author=profile,
                 title=self.fake.paragraph(nb_sentences=1),
                 # image = "media/picture_name.format",
-                content= self.fake.paragraph(nb_sentences=8),
-                status= random.choice([True,False]),
-                category= Category.objects.get(name=random.choice(category_list)),
-                published_date= datetime.now(),
+                content=self.fake.paragraph(nb_sentences=8),
+                status=random.choice([True, False]),
+                category=Category.objects.get(name=random.choice(category_list)),
+                published_date=datetime.now(),
             )
 
 
 # command for run:
-            #  docker-compose exec backend sh -c "python manage.py insert_data(file_name)"
+#  docker-compose exec backend sh -c "python manage.py insert_data(file_name)"

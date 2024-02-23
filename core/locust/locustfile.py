@@ -6,7 +6,7 @@ class QuickstartUser(HttpUser):
     def on_start(self):
         response = self.client.post(
             "/accounts/api/v1/jwt/create/",
-            data={"email": "tlindsey@example.org", "password": "test@123456"}
+            data={"email": "tlindsey@example.org", "password": "test@123456"},
         ).json()
         self.client.headers = {
             "Authorization": f"Bearer {response.get('access', None)}"

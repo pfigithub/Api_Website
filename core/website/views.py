@@ -8,7 +8,6 @@ from django.views.generic.base import RedirectView
 from django.views.generic.edit import FormView, CreateView
 
 
-
 # simple showing function base view
 def FunctionBaseViewIndex(request):
     """a function based view to show index page"""
@@ -28,7 +27,7 @@ class C1assBaseViewIndex(TemplateView):
         context = super().get_context_data(**kwargs)
         context["whatever"] = "hello class base"
         return context
-    
+
 
 # cbv for redirect
 class RedirectToEveryWhere(RedirectView):
@@ -38,11 +37,11 @@ class RedirectToEveryWhere(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
         return super().get_redirect_url(*args, **kwargs)
-    
+
 
 # fbv for maintenance page
 def maintenance_view(request):
-    return render(request, 'web/maintenance.html')
+    return render(request, "web/maintenance.html")
 
 
 # fbv for about page
@@ -78,17 +77,16 @@ class ContactFormView(FormView):
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
-        #form.send_email()
+        # form.send_email()
         return super().form_valid(form)
 
 
 # fbv newsletter
 def newsletter_view(req):
-    if req.method == 'POST':
+    if req.method == "POST":
         form = NewsletterForm(req.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect("/")
     else:
-        return HttpResponseRedirect('/')
-
+        return HttpResponseRedirect("/")

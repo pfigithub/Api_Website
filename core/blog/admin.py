@@ -14,7 +14,7 @@ class PostAdmin(SummernoteModelAdmin):
         "created_date",
         "published_date",
     ]
-    summernote_fields = ('content',)
+    summernote_fields = ("content",)
 
 
 admin.site.register(Post, PostAdmin)

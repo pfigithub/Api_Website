@@ -11,7 +11,7 @@ from django.views.generic import (
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.base import TemplateView
 from django.views.generic.base import RedirectView
-from . forms import PostForm
+from .forms import PostForm
 
 
 # Create your views here.
@@ -26,7 +26,6 @@ def FunctionBaseViewIndex(request):
     return render(request, "index.html", context)
 
 
-
 # cbv simple show for templateview
 class C1assBaseViewIndex(TemplateView):
     """a class based view to show index page"""
@@ -37,7 +36,7 @@ class C1assBaseViewIndex(TemplateView):
         context = super().get_context_data(**kwargs)
         context["whatever"] = "hello class base"
         return context
-    
+
 
 # cbv for redirect
 class RedirectToEveryWhere(RedirectView):
@@ -47,7 +46,7 @@ class RedirectToEveryWhere(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
         return super().get_redirect_url(*args, **kwargs)
-    
+
 
 # cbv post list
 class PostListView(ListView):
@@ -65,7 +64,7 @@ class PostListView(ListView):
 # cbv post detail
 class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
-    #context_object_name = "post"
+    # context_object_name = "post"
 
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
@@ -76,10 +75,10 @@ class PostDetailView(LoginRequiredMixin, DetailView):
 # create post
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    # fields list or form class 
+    # fields list or form class
     # form_class = PostForm
-    fields = ['title', 'content','status', 'category', 'published_date']
-    
+    fields = ["title", "content", "status", "category", "published_date"]
+
     success_url = "/blog/post/"
 
     def form_valid(self, form):

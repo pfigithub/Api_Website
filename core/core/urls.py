@@ -14,8 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import path,re_path, include
+from django.urls import path, re_path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from website.views import maintenance_view
@@ -27,8 +28,7 @@ from blog.sitemaps import BlogSitemap
 from django.contrib.sitemaps.views import sitemap
 
 
-
-sitemaps = {'static': StaticViewSitemap, 'blog': BlogSitemap}
+sitemaps = {"static": StaticViewSitemap, "blog": BlogSitemap}
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -47,16 +47,16 @@ site_ready = True
 
 if site_ready == False:
     urlpatterns = [
-        re_path(r'.*', maintenance_view),
-        path('__debug__/', include('debug_toolbar.urls'))
+        re_path(r".*", maintenance_view),
+        path("__debug__/", include("debug_toolbar.urls")),
     ]
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 else:
     urlpatterns = [
-        path('admin/', admin.site.urls),
-        path('api-auth/', include('rest_framework.urls')),
+        path("admin/", admin.site.urls),
+        path("api-auth/", include("rest_framework.urls")),
         path("accounts/", include("accounts.urls")),
         path("", include("website.urls")),
         path("blog/", include("blog.urls")),
@@ -70,15 +70,20 @@ else:
             schema_view.with_ui("swagger", cache_timeout=0),
             name="schema-swagger-ui",
         ),
-        path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
-        path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
-            name='django.contrib.sitemaps.views.sitemap'),
-        path('robots.txt', include('robots.urls')),
-        path('captcha/', include('captcha.urls')),
-        path('summernote/', include('django_summernote.urls')),
-        path('__debug__/', include('debug_toolbar.urls'))
-    ]   
-
+        path(
+            "redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
+        ),
+        path(
+            "sitemap.xml",
+            sitemap,
+            {"sitemaps": sitemaps},
+            name="django.contrib.sitemaps.views.sitemap",
+        ),
+        path("robots.txt", include("robots.urls")),
+        path("captcha/", include("captcha.urls")),
+        path("summernote/", include("django_summernote.urls")),
+        path("__debug__/", include("debug_toolbar.urls")),
+    ]
 
     # serving static and media for development
     if settings.DEBUG:

@@ -7,7 +7,7 @@ class PostSerializer(serializers.ModelSerializer):
     category = serializers.SlugRelatedField(
         many=False, slug_field="name", queryset=Category.objects.all()
     )
-    
+
     class Meta:
         model = Post
         fields = [
@@ -47,4 +47,3 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ["id", "name"]
-

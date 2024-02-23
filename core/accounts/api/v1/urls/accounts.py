@@ -27,8 +27,16 @@ urlpatterns = [
         name="change_password",
     ),
     # reset password
-    path("reset_password_request/",views.RequestResetPasswordApiView.as_view(), name="reset_password_request"),
-    path("reset_password/<str:token>",views.ResetPasswordApiView.as_view(),name="reset_password"),
+    path(
+        "reset_password_request/",
+        views.RequestResetPasswordApiView.as_view(),
+        name="reset_password_request",
+    ),
+    path(
+        "reset_password/<str:token>",
+        views.ResetPasswordApiView.as_view(),
+        name="reset_password",
+    ),
     # login token
     path("token/login/", views.CustomObtainAuthToken.as_view(), name="token-login"),
     path("token/logout/", views.CustomDiscardAuthToken.as_view(), name="token-logout"),
